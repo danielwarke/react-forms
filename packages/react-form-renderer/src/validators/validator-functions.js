@@ -90,12 +90,12 @@ export const numericality = memoize(
     lessOrEqual = selectNum(lessOrEqual, lessThanOrEqualTo);
 
     return prepare((value) => {
-      if (!value) {
+      if (value === null || value === undefined) {
         return;
       }
 
       if (!isNumber(value)) {
-        return prepareMsg(message, 'notANumber').defaultMessage;
+        return prepareMsg(null, 'notANumber').defaultMessage;
       }
 
       if (equal !== null && +value !== equal) {
